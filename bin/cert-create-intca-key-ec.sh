@@ -22,7 +22,7 @@ usage()
 
 if [ "$2" = "" ]; then
     usage
-    exit 1
+    exit 2
 fi
 
 CAINTNAME="$1"
@@ -33,7 +33,7 @@ BASEPATH=""
 #
 if [ -z "$PKICA_CA_HOME" ]; then
     echo "Environment variable PKICA_CA_HOME can not be empty or undefined."
-    exit 1
+    exit 2
 else
     BASEPATH="$PKICA_CA_HOME"
 fi
@@ -41,7 +41,7 @@ fi
 # double check ...
 if [ -z "$BASEPATH" ]; then
     echo "Error! BASEPATH can not be empty!"
-    exit 1
+    exit 2
 fi
 
 echo "Working in: $BASEPATH ..."
@@ -56,5 +56,5 @@ openssl genpkey -aes256 \
 retvalue=$?
 chmod 400 "$BASEPATH"/"$CAINTNAME"/data/private/"$CAKEYFILENAME"
 
-exit $retvalue
+exit "$retvalue"
 

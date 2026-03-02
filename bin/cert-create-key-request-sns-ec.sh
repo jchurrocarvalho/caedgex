@@ -25,7 +25,7 @@ usage()
 
 if [ "$6" = "" ]; then
     usage
-    exit 1
+    exit 2
 fi
 
 CANAME="$1"
@@ -39,7 +39,7 @@ BASEPATH=""
 #
 if [ -z "$PKICA_CA_HOME" ]; then
     echo "Environment variable PKICA_CA_HOME can not be empty or undefined."
-    exit 1
+    exit 2
 else
     BASEPATH="$PKICA_CA_HOME"
 fi
@@ -47,7 +47,7 @@ fi
 # double check ...
 if [ -z "$BASEPATH" ]; then
     echo "Error! BASEPATH can not be empty!"
-    exit 1
+    exit 2
 fi
 
 echo "Working in: $BASEPATH ..."
@@ -85,7 +85,7 @@ retvalue=$?
 
 if [ "$retvalue" != "0" ]; then
     echo "openssl genpkey for ec curve returned an error: $retvalue"
-    exit $retvalue
+    exit "$retvalue"
 fi
 
 chmod 400 "$BASEPATH"/"$CANAME"/data/private/"$KEYFILENAME"
@@ -99,5 +99,5 @@ openssl req -config "$BASEPATH"/"$CANAME"/conf/"$CACONFFILENAME" \
 retvalue=$?
 chmod 640 "$BASEPATH"/"$CANAME"/data/csr/"$REQFILENAME"
 
-exit $retvalue
+exit "$retvalue"
 

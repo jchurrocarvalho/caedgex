@@ -14,6 +14,7 @@ As a first approach, a standalone CA was created, but for additional security an
 - Create a CA with policies and rules tailored to its purpose to create different types of certificates, which are managed by different team members.
 
 Along the way, this project became a source of knowledge, teaching and testing, observing a lack of articles to build a "all-in-one" CA structure using several configurations for certificates issueing.
+Setting up a CA is a great learning experience.
 There are _open-source_ systems to implement PKI with automatic certificates renewal like Keyfactor / EJBCA, Dogtag, OpenXPKI or utilities like Easy-RSA for managing X.509 PKI.
 This can also suitable for small set of services / servers / containers / users, but extending the ecosystem, it is more advisable to adopt other PKI solutions, like the ones referred above.
 
@@ -181,5 +182,5 @@ All the files, exception the certificates, do not have any _other_ permissions. 
 
 - Improve certificate extensions.
 - Database for keys and certificates store.
-- SCEP Server Integration.
+- SCEP Server Integration. ACME protocol is more secure and robust, but it carries more challenges.
 - Integrate cert-monger.

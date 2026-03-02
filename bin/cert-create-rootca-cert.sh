@@ -22,7 +22,7 @@ usage()
 
 if [ "$3" = "" ]; then
     usage
-    exit 1
+    exit 2
 fi
 
 CANAME="$1"
@@ -40,7 +40,7 @@ BASEPATH=""
 #
 if [ -z "$PKICA_CA_HOME" ]; then
     echo "Environment variable PKICA_CA_HOME can not be empty or undefined."
-    exit 1
+    exit 2
 else
     BASEPATH="$PKICA_CA_HOME"
 fi
@@ -48,7 +48,7 @@ fi
 # double check ...
 if [ -z "$BASEPATH" ]; then
     echo "Error! BASEPATH can not be empty!"
-    exit 1
+    exit 2
 fi
 
 echo "Working in: $BASEPATH ..."
@@ -70,5 +70,5 @@ openssl req -config "$BASEPATH"/"$CANAME"/conf/"$CACONFFILENAME" \
 retvalue=$?
 chmod 644 "$BASEPATH"/"$CANAME"/data/certs/"$CACERTFILENAME"
 
-exit $retvalue
+exit "$retvalue"
 

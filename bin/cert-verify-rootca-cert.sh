@@ -22,7 +22,7 @@ usage()
 
 if [ "$1" = "" ]; then
     usage
-    exit 1
+    exit 2
 fi
 
 CANAME="$1"
@@ -32,7 +32,7 @@ BASEPATH=""
 #
 if [ -z "$PKICA_CA_HOME" ]; then
     echo "Environment variable PKICA_CA_HOME can not be empty or undefined."
-    exit 1
+    exit 2
 else
     BASEPATH="$PKICA_CA_HOME"
 fi
@@ -40,7 +40,7 @@ fi
 # double check ...
 if [ -z "$BASEPATH" ]; then
     echo "Error! BASEPATH can not be empty!"
-    exit 1
+    exit 2
 fi
 
 echo "Working in: $BASEPATH ..."
@@ -48,11 +48,9 @@ echo "Working in: $BASEPATH ..."
 
 CACERTFILENAME=ca_"$CANAME".crt
 
-CACONFFILENAME=ca.conf
-
 echo "Verifying root CA certificate ... ($CANAME)"
 openssl x509 -noout -text -in "$BASEPATH"/"$CANAME"/data/certs/"$CACERTFILENAME"
 retvalue=$?
 
-exit $retvalue
+exit "$retvalue"
 

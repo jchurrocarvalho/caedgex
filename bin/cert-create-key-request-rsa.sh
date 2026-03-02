@@ -22,7 +22,7 @@ usage()
 
 if [ "$5" = "" ]; then
     usage
-    exit 1
+    exit 2
 fi
 
 CANAME="$1"
@@ -41,7 +41,7 @@ BASEPATH=""
 #
 if [ -z "$PKICA_CA_HOME" ]; then
     echo "Environment variable PKICA_CA_HOME can not be empty or undefined."
-    exit 1
+    exit 2
 else
     BASEPATH="$PKICA_CA_HOME"
 fi
@@ -49,7 +49,7 @@ fi
 # double check ...
 if [ -z "$BASEPATH" ]; then
     echo "Error! BASEPATH can not be empty!"
-    exit 1
+    exit 2
 fi
 
 echo "Working in: $BASEPATH ..."
@@ -71,5 +71,5 @@ retvalue=$?
 chmod 400 "$BASEPATH"/"$CANAME"/data/private/"$KEYFILENAME"
 chmod 640 "$BASEPATH"/"$CANAME"/data/csr/"$REQFILENAME"
 
-exit $retvalue
+exit "$retvalue"
 
