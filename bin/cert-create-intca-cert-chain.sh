@@ -74,7 +74,7 @@ do
     fi
     i=$((i+1))
 done
-chmod 644 "$CACERTCHAINPATHFILENAME"
+chmod 444 "$CACERTCHAINPATHFILENAME"
 
 exit "$retvalue"
 

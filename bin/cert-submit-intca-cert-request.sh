@@ -60,7 +60,7 @@ openssl ca -config "$BASEPATH"/"$CANAME"/conf/"$CACONFFILENAME" \
     -in "$BASEPATH"/"$CAINTNAME"/data/csr/"$REQFILENAME" \
     -out "$BASEPATH"/"$CAINTNAME"/data/certs/"$CERTFILENAME"
 retvalue=$?
-chmod 644 "$BASEPATH"/"$CAINTNAME"/data/certs/"$CERTFILENAME"
+chmod 444 "$BASEPATH"/"$CAINTNAME"/data/certs/"$CERTFILENAME"
 
 exit "$retvalue"
 

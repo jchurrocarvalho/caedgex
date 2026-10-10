@@ -61,7 +61,7 @@ openssl req -config "$BASEPATH"/"$CAINTNAME"/conf/"$CACONFFILENAME" \
     -key "$BASEPATH"/"$CAINTNAME"/data/private/"$KEYFILENAME" \
     -out "$BASEPATH"/"$CAINTNAME"/data/csr/"$REQFILENAME"
 retvalue=$?
-chmod 640 "$BASEPATH"/"$CAINTNAME"/data/csr/"$REQFILENAME"
+chmod 440 "$BASEPATH"/"$CAINTNAME"/data/csr/"$REQFILENAME"
 
 exit "$retvalue"
 
